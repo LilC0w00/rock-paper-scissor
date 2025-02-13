@@ -31,3 +31,4 @@ Le résultat souhaité est soi gagnant ou perdu pour l’utilisateur.
 // Afficher ("Vous avez perdu")
 // Sinon
 // Afficher ("Egaliter")
+// Afficher ("Le robot a total de point et vous avez total de point")
