@@ -20,11 +20,10 @@ Le résultat souhaité est soi gagnant ou perdu pour l’utilisateur.
 
 // L'utilisateur doit saisir une chaine de caractère et on la stock dans une valeur
 // Crée une variable qui aura un tableau avec 3 chaine de caractère(papier,ciseau,caillou)
-// Une boucle qui parcour le tableau
 // une variable qui recupère au hasard une chaine de caractere du tableau
 // Si l'entree utilisateur est ciseau et que la valeur au hasard est papier OU
 // que l'utilisateur a choisi papier est que le robot est choisi ciseau
-// OU que l'utilisateur est choisi caillou et que le robot est choisi ciseau)
+// OU que l'utilisateur est choisi caillou et que le robot est choisi ciseau
 // Alors afficher("Vous avez gagnez")
 // sinon si (l'entree utilisateur est papier et que la valeur au hasard est caillou OU
 // que l'utilisateur a choisi ciseau est que le robot est choisi papier
