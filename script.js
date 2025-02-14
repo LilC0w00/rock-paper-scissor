@@ -1,68 +1,53 @@
-const robot = ["papier", "caillou", "ciseau"]; // Tableau des choix
+const robot = ["papier", "caillou", "ciseau"];
+let humanScore = 0;
+let computerScore = 0;
 
 function getComputerChoice() {
-  const choixHazard = robot[Math.floor(Math.random() * robot.length)];
-  return choixHazard;
+  return robot[Math.floor(Math.random() * robot.length)];
 }
 
-function getHumanChoice() {
-  const user = prompt("Choisissez : Papier, Caillou ou Ciseau").toLowerCase();
-  if (!robot.includes(user)) {
-    console.log("Choix invalide !");
-    return getHumanChoice(); // Redemander si le choix n'est pas valide
-  }
-  return user;
-}
-
-function playRound(humanChoice, computerChoice) {
-  console.log(`Vous avez choisi : ${humanChoice}`);
-  console.log(`L'ordinateur a choisi : ${computerChoice}`);
+function playRound(humanChoice) {
+  const computerChoice = getComputerChoice();
+  let resultText = `Vous avez choisi : ${humanChoice}<br>L'ordinateur a choisi : ${computerChoice}<br>`;
 
   if (humanChoice === computerChoice) {
-    console.log("Il y a égalité !");
-    return 0; // Pas de points attribués
+    resultText += "Il y a égalité !";
   } else if (
     (humanChoice === "ciseau" && computerChoice === "papier") ||
     (humanChoice === "papier" && computerChoice === "caillou") ||
     (humanChoice === "caillou" && computerChoice === "ciseau")
   ) {
-    console.log("Vous avez gagné !");
-    return 1; // L'humain gagne 1 point
+    resultText += "🎉 Vous avez gagné ce tour !";
+    humanScore++;
   } else {
-    console.log("Vous avez perdu...");
-    return -1; // L'ordinateur gagne 1 point
+    resultText += "💀 Vous avez perdu ce tour...";
+    computerScore++;
+  }
+
+  document.getElementById("resultat").innerHTML = resultText;
+  document.getElementById(
+    "score"
+  ).innerHTML = `Joueur : ${humanScore} - Ordinateur : ${computerScore}`;
+
+  if (humanScore === 5 || computerScore === 5) {
+    document.getElementById("resultat").innerHTML += `<br><strong>${
+      humanScore === 5
+        ? "🎉 Félicitations, vous gagnez la partie !"
+        : "💀 L'ordinateur a gagné la partie !"
+    }</strong>`;
+
+    // Désactiver les boutons après la victoire
+    document.querySelectorAll("button").forEach((btn) => (btn.disabled = true));
   }
 }
 
-// function playGame() {
-//   let humanScore = 0;
-//   let computerScore = 0;
-
-//   for (let i = 0; i < 3; i++) {
-//     // 3 manches
-//     const humanChoice = getHumanChoice();
-//     const computerChoice = getComputerChoice();
-
-//     const result = playRound(humanChoice, computerChoice);
-
-//     if (result === 1) {
-//       humanScore++;
-//     } else if (result === -1) {
-//       computerScore++;
-//     }
-
-//     console.log(`Score : Vous ${humanScore} - ${computerScore} Ordinateur`);
-//   }
-
-//   // Résultat final
-//   if (humanScore > computerScore) {
-//     console.log("🎉 Félicitations, vous avez gagné la partie !");
-//   } else if (humanScore < computerScore) {
-//     console.log("💀 L'ordinateur a gagné la partie !");
-//   } else {
-//     console.log("🤝 La partie est une égalité !");
-//   }
-// }
-
-// Lancer le jeu
-playGame();
+// Ajout des événements sur les boutons
+document
+  .getElementById("papier")
+  .addEventListener("click", () => playRound("papier"));
+document
+  .getElementById("caillou")
+  .addEventListener("click", () => playRound("caillou"));
+document
+  .getElementById("ciseau")
+  .addEventListener("click", () => playRound("ciseau"));
