@@ -34,35 +34,35 @@ function playRound(humanChoice, computerChoice) {
   }
 }
 
-function playGame() {
-  let humanScore = 0;
-  let computerScore = 0;
+// function playGame() {
+//   let humanScore = 0;
+//   let computerScore = 0;
 
-  for (let i = 0; i < 3; i++) {
-    // 3 manches
-    const humanChoice = getHumanChoice();
-    const computerChoice = getComputerChoice();
+//   for (let i = 0; i < 3; i++) {
+//     // 3 manches
+//     const humanChoice = getHumanChoice();
+//     const computerChoice = getComputerChoice();
 
-    const result = playRound(humanChoice, computerChoice);
+//     const result = playRound(humanChoice, computerChoice);
 
-    if (result === 1) {
-      humanScore++;
-    } else if (result === -1) {
-      computerScore++;
-    }
+//     if (result === 1) {
+//       humanScore++;
+//     } else if (result === -1) {
+//       computerScore++;
+//     }
 
-    console.log(`Score : Vous ${humanScore} - ${computerScore} Ordinateur`);
-  }
+//     console.log(`Score : Vous ${humanScore} - ${computerScore} Ordinateur`);
+//   }
 
-  // Résultat final
-  if (humanScore > computerScore) {
-    console.log("🎉 Félicitations, vous avez gagné la partie !");
-  } else if (humanScore < computerScore) {
-    console.log("💀 L'ordinateur a gagné la partie !");
-  } else {
-    console.log("🤝 La partie est une égalité !");
-  }
-}
+//   // Résultat final
+//   if (humanScore > computerScore) {
+//     console.log("🎉 Félicitations, vous avez gagné la partie !");
+//   } else if (humanScore < computerScore) {
+//     console.log("💀 L'ordinateur a gagné la partie !");
+//   } else {
+//     console.log("🤝 La partie est une égalité !");
+//   }
+// }
 
 // Lancer le jeu
 playGame();
